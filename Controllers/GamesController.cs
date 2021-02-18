@@ -27,6 +27,20 @@ namespace TestApp.Controllers
         {
             return GetGames();
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Games> GetGames_ById(int id)
+        {
+            var games = GetGames().Find(x => x.Id == id);
+            if(games != null)
+            {
+                return games;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 
     
